@@ -19,8 +19,8 @@ class Home extends Component {
 		this.getCats();
 	}
 
-	handleClickSave() {
-		console.log("clicked!");
+	handleClickSave(key) {
+		console.log(`clicked ${key}`);
 	}
 
 	getCats() {
