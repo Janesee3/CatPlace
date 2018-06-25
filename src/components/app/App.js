@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Home from "../home/Home";
 import MyCats from "../my-cats/MyCats";
+import Header from "../header/Header";
 
 class App extends Component {
 	render() {
@@ -10,14 +11,7 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<div className="container">
-						<ul>
-							<li>
-								<Link to="/">Home</Link>
-							</li>
-							<li>
-								<Link to="/my-cats">My Cats</Link>
-							</li>
-						</ul>
+						<Header />
 						<hr />
 						<Route exact={true} path="/" component={Home} />
 						<Route
