@@ -4,10 +4,6 @@ import { Col, Thumbnail, Button, Glyphicon } from "react-bootstrap";
 import "./PhotoGridItem.css";
 
 class PhotoGridItem extends Component {
-	constructor() {
-		super();
-	}
-
 	render() {
 		return (
 			<Col md={12} lg={6}>
