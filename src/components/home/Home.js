@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "./Home.css";
+import PhotoGrid from "../photo-grid/PhotoGrid";
 
 class Home extends Component {
 	constructor() {
@@ -46,7 +47,11 @@ class Home extends Component {
 	}
 
 	render() {
-		return <div>Home</div>;
+		return (
+			<div>
+				<PhotoGrid />
+			</div>
+		);
 	}
 }
 
