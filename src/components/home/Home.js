@@ -12,10 +12,15 @@ class Home extends Component {
 			cats: [],
 			isLoading: true
 		};
+		this.handleClickSave = this.handleClickSave.bind(this);
 	}
 
 	componentDidMount() {
 		this.getCats();
+	}
+
+	handleClickSave() {
+		console.log("clicked!");
 	}
 
 	getCats() {
@@ -63,6 +68,7 @@ class Home extends Component {
 				<PhotoGrid
 					cats={this.state.cats}
 					hasLoaded={!this.state.isLoading}
+					handleClickSave={this.handleClickSave}
 				/>
 			</div>
 		);
