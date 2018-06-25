@@ -20,7 +20,22 @@ class Home extends Component {
 	}
 
 	handleClickSave(key) {
-		console.log(`clicked ${key}`);
+		// localStorage.removeItem("favourites");
+		// console.log("removed!");
+
+		let faves = JSON.parse(localStorage.getItem("favourites"));
+
+		if (faves == null) {
+			faves = [key];
+		} else {
+			faves.push(key);
+		}
+
+		localStorage.setItem("favourites", JSON.stringify(faves));
+
+		// console.log(
+		// 	`Finished Writing! New Faves: ${localStorage.getItem("favourites")}`
+		// );
 	}
 
 	getCats() {
