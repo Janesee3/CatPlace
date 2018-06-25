@@ -1,0 +1,16 @@
+.button-container {
+    padding: 1em;
+}
+
+.thumbnail-container {
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid rgba(128, 128, 128, 0.534);
+    border-radius: 10px;
+}
+
+.thumbnail > img {
+    width: 100%;
+}
+
+

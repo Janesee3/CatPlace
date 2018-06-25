@@ -1,18 +1,23 @@
 import React, { Component } from "react";
-import { Col, Thumbnail, Button } from "react-bootstrap";
+import { Col, Thumbnail, Button, Glyphicon } from "react-bootstrap";
 
 import "./PhotoGridItem.css";
 
 class PhotoGridItem extends Component {
 	render() {
 		return (
-			<Col xs={12} md={6} lg={3}>
-				<Thumbnail src={this.props.src}>
-					{/* <p>
-						<Button bsStyle="primary">Button</Button>&nbsp;
-						<Button bsStyle="default">Button</Button>
-					</p> */}
-				</Thumbnail>
+			<Col md={12} lg={6}>
+				<div className="thumbnail-container">
+					<Thumbnail src={this.props.src}>
+						<div className="button-container">
+							<Button bsStyle="primary">Save</Button>&nbsp;
+							{/* <Button>
+							<Glyphicon glyph="heart" />
+						</Button> */}
+							{/* <Button bsStyle="primary">Button</Button> */}
+						</div>
+					</Thumbnail>
+				</div>
 			</Col>
 		);
 	}
