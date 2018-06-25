@@ -4,7 +4,7 @@ import "./MyCats.css";
 
 class MyCats extends Component {
 	render() {
-		return <div />;
+		return <div>My Cats</div>;
 	}
 }
 
