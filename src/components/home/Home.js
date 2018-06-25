@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import "./Home.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
 
+// API KEY: MzMxNjI4
+
 class Home extends Component {
 	constructor() {
 		super();
@@ -18,26 +20,30 @@ class Home extends Component {
 
 	getCats() {
 		fetch(
-			"http://thecatapi.com/api/images/get?format=html&results_per_page=3"
+			"http://thecatapi.com/api/images/get?format=xml&results_per_page=20"
 		)
 			.then(res => {
 				return res.text();
 			})
 			.then(text => {
 				this.setState({
-					cats: this.extractImgUrl(text),
+					cats: this.extractImgObjects(text),
 					isLoading: false
 				});
 
-				console.log(this.state.cats);
+				// console.log(this.state.cats);
 			});
 	}
 
-	// Returns an array image urls from the input htmlText string
-	extractImgUrl(htmlText) {
-		let regex = new RegExp('<img src="(.+)"', "g");
-		let matches = this.getMatches(htmlText, regex, 1);
-		return matches;
+	// Returns an array {key, url (image)} from the input text string
+	extractImgObjects(text) {
+		let regexUrl = new RegExp("<url>(.+)</url>", "g");
+		let regexId = new RegExp("<id>(.+)</id>", "g");
+		let urls = this.getMatches(text, regexUrl, 1);
+		let ids = this.getMatches(text, regexId, 1);
+		return urls.map((url, index) => {
+			return { key: ids[index], src: url };
+		});
 	}
 
 	// Returns an array of matches for the input group index
