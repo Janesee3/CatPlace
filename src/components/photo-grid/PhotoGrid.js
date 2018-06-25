@@ -10,9 +10,15 @@ class PhotoGrid extends Component {
 			<div>
 				<Grid className="container-fluid">
 					<Row>
-						{this.props.hasLoaded && this.props.cats.map(pic => {
-							return <PhotoGridItem src={pic} />;
-						})}
+						{this.props.hasLoaded &&
+							this.props.cats.map(cat => {
+								return (
+									<PhotoGridItem
+										key={cat.key}
+										src={cat.src}
+									/>
+								);
+							})}
 					</Row>
 				</Grid>
 			</div>
