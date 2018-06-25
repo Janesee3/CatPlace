@@ -7,7 +7,8 @@ class Home extends Component {
 	constructor() {
 		super();
 		this.state = {
-			cats: []
+			cats: [],
+			isLoading: true
 		};
 	}
 
@@ -23,7 +24,11 @@ class Home extends Component {
 				return res.text();
 			})
 			.then(text => {
-				this.setState({ cats: this.extractImgUrl(text) });
+				this.setState({
+					cats: this.extractImgUrl(text),
+					isLoading: false
+				});
+
 				console.log(this.state.cats);
 			});
 	}
@@ -49,7 +54,10 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
-				<PhotoGrid />
+				<PhotoGrid
+					cats={this.state.cats}
+					hasLoaded={!this.state.isLoading}
+				/>
 			</div>
 		);
 	}
