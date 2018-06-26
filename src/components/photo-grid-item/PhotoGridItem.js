@@ -10,7 +10,10 @@ class PhotoGridItem extends Component {
 				<div className="thumbnail-container">
 					<Thumbnail src={this.props.src}>
 						<div className="button-container">
-							<FaveButton picId={this.props.id} />
+							<FaveButton
+								picId={this.props.id}
+								refreshCallback={this.props.callback}
+							/>
 						</div>
 					</Thumbnail>
 				</div>

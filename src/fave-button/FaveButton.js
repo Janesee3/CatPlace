@@ -106,10 +106,8 @@ class FaveButton extends Component {
 				// Update faves in local storage
 				UserManager.removeFromUserFavourites(id);
 
-				// Update state of button to change appearance
-				this.setState({
-					isActive: false
-				});
+				// trigger refresh (might not be good for UX)
+				this.props.refreshCallback();
 			})
 			.catch(err => console.log(err));
 	}

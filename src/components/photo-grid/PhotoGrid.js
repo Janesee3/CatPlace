@@ -17,6 +17,7 @@ class PhotoGrid extends Component {
 										key={cat.key}
 										id={cat.key}
 										src={cat.src}
+										callback={this.props.callback}
 									/>
 								);
 							})}

@@ -13,6 +13,7 @@ class MyCats extends Component {
 			isLoading: true
 		};
 		this.userId = UserManager.getUserId();
+		this.getFavourites = this.getFavourites.bind(this);
 	}
 
 	componentDidMount() {
@@ -26,6 +27,7 @@ class MyCats extends Component {
 				<PhotoGrid
 					cats={this.state.faves}
 					hasLoaded={!this.state.isLoading}
+					callback={this.getFavourites}
 				/>
 			</div>
 		);
