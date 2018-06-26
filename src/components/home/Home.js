@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Home.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
-
-// API KEY:
+import UserManager from "../../UserManager";
+import GlobalVars from "../../GlobalVars";
 
 class Home extends Component {
 	constructor() {
@@ -11,6 +11,7 @@ class Home extends Component {
 			cats: [],
 			isLoading: true
 		};
+		this.userId = UserManager.getUserId();
 		this.fetchCatsEndPoint =
 			"http://thecatapi.com/api/images/get?format=xml&results_per_page=20";
 		this.handleClickSave = this.handleClickSave.bind(this);
@@ -21,22 +22,21 @@ class Home extends Component {
 	}
 
 	handleClickSave(key) {
-		// localStorage.removeItem("favourites");
-		// console.log("removed!");
+		// let faves = JSON.parse(localStorage.getItem("favourites"));
 
-		let faves = JSON.parse(localStorage.getItem("favourites"));
+		// if (faves == null) {
+		// 	faves = [key];
+		// } else {
+		// 	faves.push(key);
+		// }
 
-		if (faves == null) {
-			faves = [key];
-		} else {
-			faves.push(key);
-		}
-
-		localStorage.setItem("favourites", JSON.stringify(faves));
+		// localStorage.setItem("favourites", JSON.stringify(faves));
 
 		// console.log(
 		// 	`Finished Writing! New Faves: ${localStorage.getItem("favourites")}`
 		// );
+
+		this.favouriteCat(key);
 	}
 
 	render() {
@@ -64,11 +64,26 @@ class Home extends Component {
 					isLoading: false
 				});
 
-				// console.log(this.state.cats);
+				console.log(this.state.cats);
 			});
 	}
 
-	favouriteCat(id) {}
+	favouriteCat(id) {
+		console.log(`user id: ${this.userId}, want to favourite: ${id}}`);
+
+		fetch(
+			`http://thecatapi.com/api/images/favourite?api_key=${
+				GlobalVars.API_KEY
+			}&sub_id=${this.userId}&image_id=${id}`
+		)
+			.then(res => {
+				return res.text();
+			})
+			.then(text => {
+				console.log("favourited!");
+			})
+			.catch(err => console.log(err));
+	}
 
 	// *****  Utility Methods ***** //
 
