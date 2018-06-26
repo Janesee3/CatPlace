@@ -1,0 +1,16 @@
+.fave-btn {
+    color: white;
+    /* border-color: rgb(255, 85, 190); */
+    border-radius: 1em;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: linear;
+    background-color: rgb(245, 120, 178);
+}
+
+.fave-btn:hover {
+    background-color: rgb(243, 144, 190);
+}
+svg.fave-icon {
+    margin-right: .5em;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./FaveButton.css";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -28,18 +29,26 @@ class FaveButton extends Component {
 		return (
 			<div>
 				{this.state.isActive ? (
-					<Button bsSize="large">
-						<FontAwesomeIcon icon={faHeart} />
+					<Button
+						className="fave-btn"
+						bsSize="large"
+						onClick={() => this.handleRemoveClick(this.props.picId)}
+					>
+						<FontAwesomeIcon className="fave-icon" icon={faHeart} />
 						Remove from Favourites
 					</Button>
 				) : (
 					<Button
+						className="fave-btn"
 						bsSize="large"
 						onClick={() =>
 							this.handleFavouriteClick(this.props.picId)
 						}
 					>
-						<FontAwesomeIcon icon={faHeartEmpty} />
+						<FontAwesomeIcon
+							className="fave-icon"
+							icon={faHeartEmpty}
+						/>
 						Add to Favourites
 					</Button>
 				)}
@@ -48,6 +57,10 @@ class FaveButton extends Component {
 	}
 
 	handleFavouriteClick(id) {
+		this.favouriteCat(id);
+	}
+
+	handleRemoveClick(id) {
 		this.favouriteCat(id);
 	}
 
@@ -64,6 +77,31 @@ class FaveButton extends Component {
 			})
 			.then(text => {
 				console.log("favourited!");
+
+				// Update faves in local storage
+				UserManager.addToUserFavourites(id);
+
+				// Update state of button to change appearance
+				this.setState({
+					isActive: true
+				});
+			})
+			.catch(err => console.log(err));
+	}
+
+	unfavouriteCat(id) {
+		console.log(`user id: ${this.userId}, want to unfavourite: ${id}}`);
+
+		fetch(
+			`http://thecatapi.com/api/images/favourite?api_key=${
+				GlobalVars.API_KEY
+			}&sub_id=${this.userId}&image_id=${id}&action=remove`
+		)
+			.then(res => {
+				return res.text();
+			})
+			.then(text => {
+				console.log("removed!");
 
 				// Update faves in local storage
 				UserManager.addToUserFavourites(id);

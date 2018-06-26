@@ -5,8 +5,9 @@
 .thumbnail-container {
     padding: 1em;
     margin: 1em;
-    border: 1px solid rgba(128, 128, 128, 0.534);
+    /* border: 1px solid rgba(128, 128, 128, 0.534); */
     border-radius: 10px;
+    box-shadow: 3px 3px 13px #888888;
 }
 
 .thumbnail > img {
