@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-
 import "./Home.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
 
-// API KEY: MzMxNjI4
+// API KEY:
 
 class Home extends Component {
 	constructor() {
@@ -12,6 +11,8 @@ class Home extends Component {
 			cats: [],
 			isLoading: true
 		};
+		this.fetchCatsEndPoint =
+			"http://thecatapi.com/api/images/get?format=xml&results_per_page=20";
 		this.handleClickSave = this.handleClickSave.bind(this);
 	}
 
@@ -38,10 +39,22 @@ class Home extends Component {
 		// );
 	}
 
+	render() {
+		return (
+			<div>
+				<PhotoGrid
+					cats={this.state.cats}
+					hasLoaded={!this.state.isLoading}
+					handleClickSave={this.handleClickSave}
+				/>
+			</div>
+		);
+	}
+
+	// ** Network Related Calls ** //
+
 	getCats() {
-		fetch(
-			"http://thecatapi.com/api/images/get?format=xml&results_per_page=20"
-		)
+		fetch(this.fetchCatsEndPoint)
 			.then(res => {
 				return res.text();
 			})
@@ -54,6 +67,10 @@ class Home extends Component {
 				// console.log(this.state.cats);
 			});
 	}
+
+	favouriteCat(id) {}
+
+	// *****  Utility Methods ***** //
 
 	// Returns an array {key, url (image)} from the input text string
 	extractImgObjects(text) {
@@ -75,18 +92,6 @@ class Home extends Component {
 			matches.push(match[index]);
 		}
 		return matches;
-	}
-
-	render() {
-		return (
-			<div>
-				<PhotoGrid
-					cats={this.state.cats}
-					hasLoaded={!this.state.isLoading}
-					handleClickSave={this.handleClickSave}
-				/>
-			</div>
-		);
 	}
 }
 
