@@ -61,7 +61,7 @@ class FaveButton extends Component {
 	}
 
 	handleRemoveClick(id) {
-		this.favouriteCat(id);
+		this.unfavouriteCat(id);
 	}
 
 	favouriteCat(id) {
@@ -104,11 +104,11 @@ class FaveButton extends Component {
 				console.log("removed!");
 
 				// Update faves in local storage
-				UserManager.addToUserFavourites(id);
+				UserManager.removeFromUserFavourites(id);
 
 				// Update state of button to change appearance
 				this.setState({
-					isActive: true
+					isActive: false
 				});
 			})
 			.catch(err => console.log(err));

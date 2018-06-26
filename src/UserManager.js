@@ -38,6 +38,19 @@ class UserManager {
 		localStorage.setItem("faves", JSON.stringify(faves));
 	}
 
+	removeFromUserFavourites(id) {
+		let faves = this.getUserFavourites();
+
+		if (faves.includes(id)) {
+			faves = faves.filter(item => item !== id);
+		}
+
+		console.log(faves);
+		console.log("removed " + id);
+
+		localStorage.setItem("faves", JSON.stringify(faves));
+	}
+
 	clearUserFavourites() {
 		localStorage.setItem("faves", null);
 	}
