@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Col, Thumbnail, Button, Glyphicon } from "react-bootstrap";
+import { Col, Thumbnail } from "react-bootstrap";
 
 import "./PhotoGridItem.css";
+import FaveButton from "../../fave-button/FaveButton";
 
 class PhotoGridItem extends Component {
 	render() {
@@ -10,16 +11,7 @@ class PhotoGridItem extends Component {
 				<div className="thumbnail-container">
 					<Thumbnail src={this.props.src}>
 						<div className="button-container">
-							<Button
-								bsStyle="primary"
-								onClick={this.props.handleClickSave}
-							>
-								Add To Favourites
-							</Button>&nbsp;
-							{/* <Button>
-							<Glyphicon glyph="heart" />
-						</Button> */}
-							{/* <Button bsStyle="primary">Button</Button> */}
+							<FaveButton picId={this.key} />
 						</div>
 					</Thumbnail>
 				</div>
