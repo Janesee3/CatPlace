@@ -15,10 +15,8 @@ class PhotoGrid extends Component {
 								return (
 									<PhotoGridItem
 										key={cat.key}
+										id={cat.key}
 										src={cat.src}
-										// handleClickSave={() =>
-										// 	this.props.handleClickSave(cat.key)
-										// }
 									/>
 								);
 							})}

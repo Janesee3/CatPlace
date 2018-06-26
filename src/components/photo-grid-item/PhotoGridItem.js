@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Col, Thumbnail } from "react-bootstrap";
-
 import "./PhotoGridItem.css";
 import FaveButton from "../../fave-button/FaveButton";
 
@@ -11,7 +10,7 @@ class PhotoGridItem extends Component {
 				<div className="thumbnail-container">
 					<Thumbnail src={this.props.src}>
 						<div className="button-container">
-							<FaveButton picId={this.key} />
+							<FaveButton picId={this.props.id} />
 						</div>
 					</Thumbnail>
 				</div>
