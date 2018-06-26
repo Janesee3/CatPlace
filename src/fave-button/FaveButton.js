@@ -11,7 +11,8 @@ class FaveButton extends Component {
 	constructor() {
 		super();
 		this.state = {
-			isActive: false
+			isActive: false,
+			isLoading: false
 		};
 		this.userId = UserManager.getUserId();
 		this.handleFavouriteClick.bind();
@@ -28,28 +29,49 @@ class FaveButton extends Component {
 	render() {
 		return (
 			<div>
+
+                {/* Active Button (favourited) */}
+
 				{this.state.isActive ? (
 					<Button
 						className="fave-btn"
 						bsSize="large"
-						onClick={() => this.handleRemoveClick(this.props.picId)}
+						disabled={this.state.isLoading}
+						onClick={
+							!this.state.isLoading
+								? () => this.handleRemoveClick(this.props.picId)
+								: null
+						}
 					>
 						<FontAwesomeIcon className="fave-icon" icon={faHeart} />
-						Remove from Favourites
+						{this.state.isLoading
+							? "Removing..."
+							: "Remove from Favourites"}
 					</Button>
 				) : (
+
+                    // Inactive Button (not favourited)
+
 					<Button
 						className="fave-btn"
 						bsSize="large"
-						onClick={() =>
-							this.handleFavouriteClick(this.props.picId)
+						disabled={this.state.isLoading}
+						onClick={
+							!this.state.isLoading
+								? () =>
+										this.handleFavouriteClick(
+											this.props.picId
+										)
+								: null
 						}
 					>
 						<FontAwesomeIcon
 							className="fave-icon"
 							icon={faHeartEmpty}
 						/>
-						Add to Favourites
+						{this.state.isLoading
+							? "Adding..."
+							: "Add to Favourites"}
 					</Button>
 				)}
 			</div>
@@ -65,7 +87,9 @@ class FaveButton extends Component {
 	}
 
 	favouriteCat(id) {
-		console.log(`user id: ${this.userId}, want to favourite: ${id}}`);
+		this.setState({
+			isLoading: true
+		});
 
 		fetch(
 			`http://thecatapi.com/api/images/favourite?api_key=${
@@ -83,14 +107,17 @@ class FaveButton extends Component {
 
 				// Update state of button to change appearance
 				this.setState({
-					isActive: true
+					isActive: true,
+					isLoading: false
 				});
 			})
 			.catch(err => console.log(err));
 	}
 
 	unfavouriteCat(id) {
-		console.log(`user id: ${this.userId}, want to unfavourite: ${id}}`);
+		this.setState({
+			isLoading: true
+		});
 
 		fetch(
 			`http://thecatapi.com/api/images/favourite?api_key=${
@@ -105,6 +132,11 @@ class FaveButton extends Component {
 
 				// Update faves in local storage
 				UserManager.removeFromUserFavourites(id);
+
+				// Update state for button
+				this.setState({
+					isLoading: false
+				});
 
 				// trigger refresh (might not be good for UX)
 				this.props.refreshCallback();
