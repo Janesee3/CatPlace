@@ -4,8 +4,15 @@ import "./App.css";
 import Home from "../home/Home";
 import MyCats from "../my-cats/MyCats";
 import Header from "../header/Header";
+import UserManager from "../../UserManager";
 
 class App extends Component {
+	// For debug purposes only
+	// componentDidMount() {
+	// 	UserManager.removeUserId();
+	// 	UserManager.clearUserFavourites();
+	// }
+
 	render() {
 		return (
 			<Router>
