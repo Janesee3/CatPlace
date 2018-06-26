@@ -12,8 +12,16 @@ class FaveButton extends Component {
 		this.state = {
 			isActive: false
 		};
-        this.userId = UserManager.getUserId();
-        this.handleFavouriteClick.bind();
+		this.userId = UserManager.getUserId();
+		this.handleFavouriteClick.bind();
+	}
+
+	componentDidMount() {
+		if (UserManager.isFavourited(this.props.picId)) {
+			this.setState({
+				isActive: true
+			});
+		}
 	}
 
 	render() {
@@ -56,6 +64,11 @@ class FaveButton extends Component {
 			})
 			.then(text => {
 				console.log("favourited!");
+
+				// Update faves in local storage
+				UserManager.addToUserFavourites(id);
+
+				// Update state of button to change appearance
 				this.setState({
 					isActive: true
 				});
