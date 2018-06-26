@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Button, Glyphicon } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartEmpty } from "@fortawesome/free-regular-svg-icons";
 
 class FaveButton extends Component {
 	constructor() {
@@ -12,24 +15,14 @@ class FaveButton extends Component {
 		return (
 			<div>
 				{this.state.isActive ? (
-					// <Button
-					// 	bsStyle="primary"
-					// 	onClick={this.props.handleClickSave}
-					// >
-					// 	Add To Favourites
-					// </Button>
 					<Button bsSize="large">
-						<Glyphicon glyph="star" /> Star
+						<FontAwesomeIcon icon={faHeart} />
+						Remove from Favourites
 					</Button>
 				) : (
-					// <Button
-					// 	bsStyle="primary"
-					// 	onClick={this.props.handleClickRemove}
-					// >
-					// 	Remove From Favourites
-					// </Button>
 					<Button bsSize="large">
-						<Glyphicon glyph="star-empty" /> Star
+						<FontAwesomeIcon icon={faHeartEmpty} />
+						Add to Favourites
 					</Button>
 				)}
 			</div>
