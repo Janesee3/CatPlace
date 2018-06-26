@@ -26,7 +26,6 @@ class MyCats extends Component {
 				<PhotoGrid
 					cats={this.state.faves}
 					hasLoaded={!this.state.isLoading}
-					type={GlobalVars.GRID_TYPE.FAVOURITES}
 				/>
 			</div>
 		);

@@ -32,8 +32,6 @@ class Home extends Component {
 				<PhotoGrid
 					cats={this.state.cats}
 					hasLoaded={!this.state.isLoading}
-					type={GlobalVars.GRID_TYPE.HOME}
-					handleClickSave={this.handleClickSave}
 				/>
 			</div>
 		);
