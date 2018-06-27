@@ -1,10 +1,21 @@
 .header {
     background: #ff7d52;
-
+    color: white;
 }
 
 .header > img {
     width: 100%;
     max-width: 10em;
     height: auto;
+}
+
+.header .title {
+    font-weight: 700;
+    font-size: 4rem;
+    
+}
+
+.header .subtitle {
+    font-weight: 300;
+    font-size: 1.3rem;
 }
