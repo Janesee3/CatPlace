@@ -1,0 +1,13 @@
+
+.nav-bar a {
+    display: block;
+    width: inherit;
+    height: inherit;
+    color: white;
+    background: black;
+}
+
+.nav-bar a:hover {
+    color: white;
+    text-decoration: none;
+}
