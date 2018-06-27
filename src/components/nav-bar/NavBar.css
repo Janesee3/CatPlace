@@ -1,13 +1,28 @@
+.nav-bar .row div {
+    padding: 0;
+}
 
 .nav-bar a {
     display: block;
     width: inherit;
     height: inherit;
     color: white;
-    background: black;
+    background: #4a4a4a;
+    line-height: 3.5em;
+    font-size: 1.2rem;
+    transition-property: all;
+    transition-duration: .4s;
+    transition-timing-function: linear;
 }
 
 .nav-bar a:hover {
     color: white;
     text-decoration: none;
+    background: #666666
+}
+
+.nav-bar a:active {
+    color: white;
+    text-decoration: none;
+    background: #3d3d3d
 }

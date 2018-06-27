@@ -7,7 +7,7 @@ import "./NavBar.css";
 class NavBar extends Component {
 	render() {
 		return (
-			<Grid className="nav-bar">
+			<div className="nav-bar">
 				<Row>
 					<Col xs={12} md={6}>
 						<Link to="/">
@@ -18,7 +18,7 @@ class NavBar extends Component {
 						<Link to="/my-cats">My Cats</Link>
 					</Col>
 				</Row>
-			</Grid>
+			</div>
 		);
 	}
 }
