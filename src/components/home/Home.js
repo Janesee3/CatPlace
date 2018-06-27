@@ -15,26 +15,22 @@ class Home extends Component {
 		this.userId = UserManager.getUserId();
 		this.fetchCatsEndPoint =
 			"http://thecatapi.com/api/images/get?format=xml&results_per_page=20";
-		this.handleClickSave = this.handleClickSave.bind(this);
-	}
-
-	componentDidMount() {
-		this.getCats();
-	}
-
-	handleClickSave(key) {
-		this.favouriteCat(key);
 	}
 
 	render() {
 		return (
 			<div>
+				<h1 className="heading">Home</h1>
 				<PhotoGrid
 					cats={this.state.cats}
 					hasLoaded={!this.state.isLoading}
 				/>
 			</div>
 		);
+	}
+
+	componentDidMount() {
+		this.getCats();
 	}
 
 	// ** Network Related Calls ** //
@@ -50,23 +46,6 @@ class Home extends Component {
 					isLoading: false
 				});
 			});
-	}
-
-	favouriteCat(id) {
-		console.log(`user id: ${this.userId}, want to favourite: ${id}}`);
-
-		fetch(
-			`http://thecatapi.com/api/images/favourite?api_key=${
-				GlobalVars.API_KEY
-			}&sub_id=${this.userId}&image_id=${id}`
-		)
-			.then(res => {
-				return res.text();
-			})
-			.then(text => {
-				console.log("favourited!");
-			})
-			.catch(err => console.log(err));
 	}
 }
 
