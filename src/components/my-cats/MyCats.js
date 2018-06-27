@@ -16,14 +16,10 @@ class MyCats extends Component {
 		this.getFavourites = this.getFavourites.bind(this);
 	}
 
-	componentDidMount() {
-		this.getFavourites();
-	}
-
 	render() {
 		return (
 			<div>
-				<div>My Cats</div>
+				<h1 className="heading">My Cats</h1>
 				<PhotoGrid
 					cats={this.state.faves}
 					hasLoaded={!this.state.isLoading}
@@ -31,6 +27,10 @@ class MyCats extends Component {
 				/>
 			</div>
 		);
+	}
+
+	componentDidMount() {
+		this.getFavourites();
 	}
 
 	getFavourites() {
