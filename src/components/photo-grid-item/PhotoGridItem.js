@@ -24,9 +24,8 @@ class PhotoGridItem extends Component {
 }
 
 PhotoGridItem.propTypes = {
-	key: PropTypes.string,
-	id: PropTypes.string,
-	src: PropTypes.string,
+	id: PropTypes.string.isRequired,
+	src: PropTypes.string.isRequired,
 	refreshCallback: PropTypes.func
 };
 
