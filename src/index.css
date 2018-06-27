@@ -1,7 +1,11 @@
-/* @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"); */
-
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat Alternates', sans-serif !important;
+}
+.heading {
+  font-weight: 700;
+}
+.subheading {
+  font-weight: 300;
 }
