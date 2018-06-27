@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Grid } from "react-bootstrap";
-
 import "./PhotoGrid.css";
 import PhotoGridItem from "../photo-grid-item/PhotoGridItem";
 
