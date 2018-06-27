@@ -133,7 +133,8 @@ class FaveButton extends Component {
 
 				// Update state for button
 				this.setState({
-					isLoading: false
+					isLoading: false,
+					isActive: false
 				});
 
 				// trigger refresh to reload new data set (might not be good for UX)
