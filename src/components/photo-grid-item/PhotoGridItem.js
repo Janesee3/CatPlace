@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Thumbnail } from "react-bootstrap";
 import "./PhotoGridItem.css";
-import FaveButton from "../../fave-button/FaveButton";
+import FaveButton from "../fave-button/FaveButton";
 
 class PhotoGridItem extends Component {
 	render() {

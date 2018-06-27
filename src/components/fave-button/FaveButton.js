@@ -4,8 +4,8 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartEmpty } from "@fortawesome/free-regular-svg-icons";
-import GlobalVars from "../GlobalVars";
-import UserManager from "../UserManager";
+import GlobalVars from "../../GlobalVars";
+import UserManager from "../../UserManager";
 
 class FaveButton extends Component {
 	constructor() {
@@ -29,8 +29,7 @@ class FaveButton extends Component {
 	render() {
 		return (
 			<div>
-
-                {/* Active Button (favourited) */}
+				{/* Active Button (favourited) */}
 
 				{this.state.isActive ? (
 					<Button
@@ -49,8 +48,7 @@ class FaveButton extends Component {
 							: "Remove from Favourites"}
 					</Button>
 				) : (
-
-                    // Inactive Button (not favourited)
+					// Inactive Button (not favourited)
 
 					<Button
 						className="fave-btn"
