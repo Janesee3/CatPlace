@@ -23,7 +23,7 @@ class MyCats extends Component {
 				<PhotoGrid
 					cats={this.state.faves}
 					hasLoaded={!this.state.isLoading}
-					callback={this.getFavourites}
+					refreshCallback={this.getFavourites}
 				/>
 			</div>
 		);

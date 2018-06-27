@@ -136,7 +136,7 @@ class FaveButton extends Component {
 					isLoading: false
 				});
 
-				// trigger refresh (might not be good for UX)
+				// trigger refresh to reload new data set (might not be good for UX)
 				this.props.refreshCallback();
 			})
 			.catch(err => console.log(err));
