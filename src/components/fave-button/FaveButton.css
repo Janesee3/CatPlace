@@ -1,10 +1,13 @@
+
+
 .fave-btn {
     color: white;
     border-radius: 1em;
     transition-property: all;
     transition-duration: .5s;
     transition-timing-function: linear;
-    background-color:rgb(247, 77, 94)
+    background-color:rgb(247, 77, 94);
+    box-shadow: 1px 1px 5px #888888;
 }
 
 .fave-btn:hover {

@@ -28,7 +28,7 @@ class FaveButton extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="fave-btn-container">
 				{/* Active Button (favourited) */}
 
 				{this.state.isActive ? (

@@ -4,7 +4,7 @@
 
 .thumbnail-container {
     background: white;
-    padding: 1em;
+    padding: 0em;
     margin: 1em;
     border-radius: 10px;
     box-shadow: 3px 3px 13px #888888;
@@ -12,6 +12,7 @@
 
 .thumbnail > img {
     width: 100%;
+    border-bottom: 1px solid grey
 }
 
 
