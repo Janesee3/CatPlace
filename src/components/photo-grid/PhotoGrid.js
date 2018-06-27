@@ -25,20 +25,6 @@ class PhotoGrid extends Component {
 			</Grid>
 		);
 	}
-
-	// componentDidMount() {
-	// 	window.addEventListener("scroll", this.onScroll, false);
-	// }
-
-	// componentWillUnmount() {
-	// 	window.removeEventListener("scroll", this.onScroll, false);
-	// }
-
-	// onScroll = () => {
-	// 	if (Utility.isEndOfPage()) {
-	// 		this.props.loadMore();
-	// 	}
-	// };
 }
 
 PhotoGrid.propTypes = {

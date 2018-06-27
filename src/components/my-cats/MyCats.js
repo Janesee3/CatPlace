@@ -47,8 +47,6 @@ class MyCats extends Component {
 					faves: Utility.extractImgObjects(text),
 					isLoading: false
 				});
-
-				console.log(this.state.faves);
 			});
 	}
 }

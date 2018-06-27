@@ -98,8 +98,6 @@ class FaveButton extends Component {
 				return res.text();
 			})
 			.then(text => {
-				console.log("favourited!");
-
 				// Update faves in local storage
 				UserManager.addToUserFavourites(id);
 
@@ -126,8 +124,6 @@ class FaveButton extends Component {
 				return res.text();
 			})
 			.then(text => {
-				console.log("removed!");
-
 				// Update faves in local storage
 				UserManager.removeFromUserFavourites(id);
 

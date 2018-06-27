@@ -21,6 +21,7 @@ class Utility {
 		return matches;
 	}
 
+	// Returns true if current document position is at the end, false otherwise
 	isEndOfPage = () => {
 		const windowHeight =
 			"innerHeight" in window

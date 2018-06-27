@@ -3,7 +3,6 @@ import "./Home.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
 import UserManager from "../../UserManager";
 import { withInfiniteScroll } from "../WithInfiniteScroll";
-// import GlobalVars from "../../GlobalVars";
 import Utility from "../../Utility";
 
 class Home extends Component {
@@ -23,11 +22,6 @@ class Home extends Component {
 		return (
 			<div>
 				<h1 className="heading">Home</h1>
-				{/* <PhotoGrid
-					cats={this.state.cats}
-					hasLoaded={!this.state.isLoading}
-					loadMore={this.getCats}
-				/> */}
 				<GridWithInfinite
 					cats={this.state.cats}
 					hasLoaded={!this.state.isLoading}
