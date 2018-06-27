@@ -1,3 +1,11 @@
+#root {
+  min-height: 100vh;
+}
+
+#root > * {
+  min-height: inherit;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,7 +13,10 @@ body {
 }
 .heading {
   font-weight: 700;
+  margin: 1em;
+  color: #000000;
 }
 .subheading {
   font-weight: 300;
+  color: #000000;
 }
