@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
+import { Image } from "react-bootstrap";
 import "./Header.css";
+import NavBar from "../nav-bar/NavBar";
+import icon from "../../assets/kitten_icon.png";
 
 class Header extends Component {
 	render() {
 		return (
-			<ul>
-				<li>
-					<Link to="/">Home</Link>
-				</li>
-				<li>
-					<Link to="/my-cats">My Cats</Link>
-				</li>
-			</ul>
+			<div className="header">
+				<img src={icon} />
+				<h1 className="heading">The Cat Place</h1>
+				<h2 className="subheading">Get your daily dose of Cat here!</h2>
+				<NavBar />
+			</div>
 		);
 	}
 }

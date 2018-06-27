@@ -1,0 +1,10 @@
+.header {
+    background: #ff7d52;
+
+}
+
+.header > img {
+    width: 100%;
+    max-width: 10em;
+    height: auto;
+}
