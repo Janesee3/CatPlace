@@ -49,8 +49,6 @@ class Home extends Component {
 					cats: Utility.extractImgObjects(text),
 					isLoading: false
 				});
-
-				console.log(this.state.cats);
 			});
 	}
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Row, Grid, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 import "./NavBar.css";
 
