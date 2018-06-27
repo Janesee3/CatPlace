@@ -12,10 +12,11 @@
 .header .title {
     font-weight: 700;
     font-size: 4rem;
-    
+    margin: .3em;
 }
 
 .header .subtitle {
     font-weight: 300;
     font-size: 1.3rem;
+    margin: 1em;
 }
