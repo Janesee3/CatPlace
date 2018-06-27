@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Col, Thumbnail } from "react-bootstrap";
 import "./PhotoGridItem.css";
 import FaveButton from "../fave-button/FaveButton";
@@ -12,7 +13,7 @@ class PhotoGridItem extends Component {
 						<div className="button-container">
 							<FaveButton
 								picId={this.props.id}
-								refreshCallback={this.props.callback}
+								refreshCallback={this.props.refreshCallback}
 							/>
 						</div>
 					</Thumbnail>
@@ -21,5 +22,12 @@ class PhotoGridItem extends Component {
 		);
 	}
 }
+
+PhotoGridItem.propTypes = {
+	key: PropTypes.string,
+	id: PropTypes.string,
+	src: PropTypes.string,
+	refreshCallback: PropTypes.func
+};
 
 export default PhotoGridItem;
