@@ -5,7 +5,7 @@ import "./PhotoGridItem.css";
 import FaveButton from "../fave-button/FaveButton";
 
 const PhotoGridItem = props => (
-	<Col md={12} lg={6}>
+	<Col xs={12} md={6}>
 		<div className="thumbnail-container">
 			<Thumbnail src={props.src}>
 				<div className="button-container">
