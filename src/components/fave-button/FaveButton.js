@@ -18,51 +18,53 @@ class FaveButton extends Component {
 	}
 
 	componentDidMount() {
-		if (UserManager.isFavourited(this.props.picId)) {
-			this.setState({
-				isActive: true
-			});
-		}
+		this.setState({
+			isActive: UserManager.isFavourited(this.props.picId)
+		});
 	}
 
 	render() {
 		return (
 			<div className="fave-btn-container">
-				{/* Active Button (favourited) */}
-
-				{this.state.isActive ? (
-					<Button
-						className="fave-btn"
-						bsSize="large"
-						disabled={this.state.isLoading}
-						onClick={
-							!this.state.isLoading
-								? () => this.handleRemoveClick(this.props.picId)
-								: null
-						}
-					>
-						<FontAwesomeIcon className="fave-icon" icon={faHeart} />
-						{this.state.isLoading ? "Removing..." : "Remove from Favourites"}
-					</Button>
-				) : (
-					// Inactive Button (not favourited)
-
-					<Button
-						className="fave-btn"
-						bsSize="large"
-						disabled={this.state.isLoading}
-						onClick={
-							!this.state.isLoading
-								? () => this.handleFavouriteClick(this.props.picId)
-								: null
-						}
-					>
-						<FontAwesomeIcon className="fave-icon" icon={faHeartEmpty} />
-						{this.state.isLoading ? "Adding..." : "Add to Favourites"}
-					</Button>
-				)}
+				<Button
+					className="fave-btn"
+					bsSize="large"
+					disabled={this.state.isLoading}
+					onClick={this.getClickHandler()}
+				>
+					<FontAwesomeIcon className="fave-icon" icon={this.getButtonIcon()} />
+					{this.getButtonContent(this.state.isActive)}
+				</Button>
 			</div>
 		);
+	}
+
+	// ** Helper Methods ** //
+
+	getClickHandler() {
+		let handler;
+		this.state.isActive
+			? (handler = () => this.handleRemoveClick(this.props.picId))
+			: (handler = () => this.handleFavouriteClick(this.props.picId));
+		return !this.state.isLoading ? handler : null;
+	}
+
+	getButtonIcon() {
+		return this.state.isActive ? faHeart : faHeartEmpty;
+	}
+
+	getButtonContent() {
+		if (this.state.isActive) {
+			return (
+				<div>
+					{this.state.isLoading ? "Removing..." : "Remove from Favourites"}
+				</div>
+			);
+		} else {
+			return (
+				<div>{this.state.isLoading ? "Adding..." : "Add to Favourites"}</div>
+			);
+		}
 	}
 
 	//** Button Handlers **/
@@ -91,7 +93,8 @@ class FaveButton extends Component {
 				return res.text();
 			})
 			.then(text => {
-				// Update faves in local storage
+				// Update faves in local storage (to be checked against to decide if
+				// button should be in active or inactive state)
 				UserManager.addToUserFavourites(id);
 
 				// Update state of button to change appearance
@@ -117,17 +120,21 @@ class FaveButton extends Component {
 				return res.text();
 			})
 			.then(text => {
-				// Update faves in local storage
+				// Update faves in local storage (to be checked against to decide if
+				// button should be in active or inactive state)
 				UserManager.removeFromUserFavourites(id);
 
 				// Update state for button
 				this.setState({
-					isLoading: false,
-					isActive: false
+					isActive: false,
+					isLoading: false
 				});
 
-				// trigger refresh to reload new data set (might not be good for UX)
-				this.props.refreshCallback();
+				// If refreshCallback prop exists, call it to
+				// trigger refresh and reload new data set
+				if (this.props.refreshCallback) {
+					this.props.refreshCallback();
+				}
 			})
 			.catch(err => console.log(err));
 	}
