@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import Home from "../home/Home";
-import MyCats from "../my-cats/MyCats";
 import Header from "../header/Header";
+import NavRoutes from "../NavRoutes";
 // import UserManager from "../../UserManager";
 
 class App extends Component {
@@ -19,8 +18,7 @@ class App extends Component {
 				<div className="App">
 					<Header />
 					<div className="container">
-						<Route exact={true} path="/" component={Home} />
-						<Route exact={true} path="/my-cats" component={MyCats} />
+						<NavRoutes />
 					</div>
 				</div>
 			</Router>
