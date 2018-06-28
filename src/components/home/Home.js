@@ -26,7 +26,7 @@ class Home extends Component {
 					cats={this.state.cats}
 					hasLoaded={!this.state.isLoading}
 					loadMore={this.getCats}
-				/>;
+				/>
 			</div>
 		);
 	}
