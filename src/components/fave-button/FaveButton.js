@@ -85,7 +85,7 @@ class FaveButton extends Component {
 		});
 
 		fetch(
-			`https://api.jumpstart.site:3000/thecatapi.com/api/images/favourite?sub_id=${
+			`http://api.jumpstart.site:3000/thecatapi.com/api/images/favourite?sub_id=${
 				this.userId
 			}&image_id=${id}`
 		)
@@ -115,7 +115,7 @@ class FaveButton extends Component {
 		});
 
 		fetch(
-			`https://api.jumpstart.site:3000/thecatapi.com/api/images/favourite?sub_id=${
+			`http://api.jumpstart.site:3000/thecatapi.com/api/images/favourite?sub_id=${
 				this.userId
 			}&image_id=${id}&action=remove`
 		)

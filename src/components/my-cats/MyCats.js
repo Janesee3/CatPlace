@@ -34,7 +34,7 @@ class MyCats extends Component {
 
 	getFavourites() {
 		fetch(
-			`https://api.jumpstart.site:3000/thecatapi.com/api/images/getfavourites?sub_id=${
+			`http://api.jumpstart.site:3000/thecatapi.com/api/images/getfavourites?sub_id=${
 				this.userId
 			}`
 		)
