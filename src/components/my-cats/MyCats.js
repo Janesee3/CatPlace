@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import GlobalVars from "../../GlobalVars";
 import "./MyCats.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
-import Utility from "../../Utility";
+import { extractImgObjects } from "../../Utility";
 import UserManager from "../../UserManager";
 
 class MyCats extends Component {
@@ -35,16 +34,19 @@ class MyCats extends Component {
 
 	getFavourites() {
 		fetch(
-			`http://thecatapi.com/api/images/getfavourite?api_key=${
-				GlobalVars.API_KEY
-			}&sub_id=${this.userId}`
+			// `http://thecatapi.com/api/images/getfavourite?api_key=${API_KEY}&sub_id=${
+			// 	this.userId
+			// }`
+			`http://api.jumpstart.site:3000/thecatapi.com/api/images/getfavourites?sub_id=${
+				this.userId
+			}`
 		)
 			.then(res => {
 				return res.text();
 			})
 			.then(text => {
 				this.setState({
-					faves: Utility.extractImgObjects(text),
+					faves: extractImgObjects(text),
 					isLoading: false
 				});
 			});

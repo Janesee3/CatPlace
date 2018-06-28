@@ -1,8 +1,7 @@
 import React from "react";
-import Utility from '../Utility'; 
+import { isEndOfPage } from "../Utility";
 
 export const withInfiniteScroll = Component =>
-
 	class WithInfiniteScroll extends Component {
 		componentDidMount() {
 			window.addEventListener("scroll", this.onScroll, false);
@@ -13,10 +12,10 @@ export const withInfiniteScroll = Component =>
 		}
 
 		onScroll = () => {
-			if (Utility.isEndOfPage()) {
+			if (isEndOfPage()) {
 				this.props.loadMore();
 			}
-		}
+		};
 
 		render() {
 			return <Component {...this.props} />;

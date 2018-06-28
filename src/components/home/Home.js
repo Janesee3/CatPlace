@@ -3,7 +3,7 @@ import "./Home.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
 import UserManager from "../../UserManager";
 import { withInfiniteScroll } from "../WithInfiniteScroll";
-import Utility from "../../Utility";
+import { extractImgObjects } from "../../Utility";
 
 class Home extends Component {
 	constructor() {
@@ -22,7 +22,7 @@ class Home extends Component {
 		return (
 			<div>
 				<h1 className="heading">Home</h1>
-				<GridWithInfinite
+				<PhotoGridWithInfinite
 					cats={this.state.cats}
 					hasLoaded={!this.state.isLoading}
 					loadMore={this.getCats}
@@ -38,12 +38,16 @@ class Home extends Component {
 	// ** Network Related Calls ** //
 
 	getCats() {
+		this.setState({
+			isLoading: true
+		});
+
 		fetch(this.fetchCatsEndPoint)
 			.then(res => {
 				return res.text();
 			})
 			.then(text => {
-				let newCats = Utility.extractImgObjects(text);
+				let newCats = extractImgObjects(text);
 
 				this.setState({
 					cats: this.state.cats.slice().concat(newCats),
@@ -53,6 +57,6 @@ class Home extends Component {
 	}
 }
 
-const GridWithInfinite = withInfiniteScroll(PhotoGrid);
+const PhotoGridWithInfinite = withInfiniteScroll(PhotoGrid);
 
 export default Home;

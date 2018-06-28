@@ -3,21 +3,20 @@ import PropTypes from "prop-types";
 import { Row, Grid } from "react-bootstrap";
 import "./PhotoGrid.css";
 import PhotoGridItem from "../photo-grid-item/PhotoGridItem";
-import Utility from "../../Utility";
 
 class PhotoGrid extends Component {
 	render() {
 		return (
 			<Grid className="container-fluid">
 				<Row>
-					{this.props.hasLoaded &&
+					{this.props.cats.length > 0 &&
 						this.props.cats.map(cat => {
 							return (
 								<PhotoGridItem
 									key={cat.key}
 									id={cat.key}
 									src={cat.src}
-									refreshCallback={this.props.callback}
+									refreshCallback={this.props.refreshCallback}
 								/>
 							);
 						})}

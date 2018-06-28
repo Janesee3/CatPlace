@@ -4,7 +4,6 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartEmpty } from "@fortawesome/free-regular-svg-icons";
-import GlobalVars from "../../GlobalVars";
 import UserManager from "../../UserManager";
 
 class FaveButton extends Component {
@@ -43,9 +42,7 @@ class FaveButton extends Component {
 						}
 					>
 						<FontAwesomeIcon className="fave-icon" icon={faHeart} />
-						{this.state.isLoading
-							? "Removing..."
-							: "Remove from Favourites"}
+						{this.state.isLoading ? "Removing..." : "Remove from Favourites"}
 					</Button>
 				) : (
 					// Inactive Button (not favourited)
@@ -56,25 +53,19 @@ class FaveButton extends Component {
 						disabled={this.state.isLoading}
 						onClick={
 							!this.state.isLoading
-								? () =>
-										this.handleFavouriteClick(
-											this.props.picId
-										)
+								? () => this.handleFavouriteClick(this.props.picId)
 								: null
 						}
 					>
-						<FontAwesomeIcon
-							className="fave-icon"
-							icon={faHeartEmpty}
-						/>
-						{this.state.isLoading
-							? "Adding..."
-							: "Add to Favourites"}
+						<FontAwesomeIcon className="fave-icon" icon={faHeartEmpty} />
+						{this.state.isLoading ? "Adding..." : "Add to Favourites"}
 					</Button>
 				)}
 			</div>
 		);
 	}
+
+	//** Button Handlers **/
 
 	handleFavouriteClick(id) {
 		this.favouriteCat(id);
@@ -84,15 +75,17 @@ class FaveButton extends Component {
 		this.unfavouriteCat(id);
 	}
 
+	//** Network Related Calls **/
+
 	favouriteCat(id) {
 		this.setState({
 			isLoading: true
 		});
 
 		fetch(
-			`http://thecatapi.com/api/images/favourite?api_key=${
-				GlobalVars.API_KEY
-			}&sub_id=${this.userId}&image_id=${id}`
+			`http://api.jumpstart.site:3000/thecatapi.com/api/images/favourite?sub_id=${
+				this.userId
+			}&image_id=${id}`
 		)
 			.then(res => {
 				return res.text();
@@ -116,9 +109,9 @@ class FaveButton extends Component {
 		});
 
 		fetch(
-			`http://thecatapi.com/api/images/favourite?api_key=${
-				GlobalVars.API_KEY
-			}&sub_id=${this.userId}&image_id=${id}&action=remove`
+			`http://api.jumpstart.site:3000/thecatapi.com/api/images/favourite?sub_id=${
+				this.userId
+			}&image_id=${id}&action=remove`
 		)
 			.then(res => {
 				return res.text();
