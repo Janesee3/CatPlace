@@ -16,6 +16,9 @@ class FaveButton extends Component {
 		};
 		this.userId = UserManager.getUserId();
 		this.toastId = null;
+		this.favouriteUrl = `https://api.jumpstart.site/thecatapi.com/api/images/favourite?sub_id=${
+			this.userId
+		}`;
 	}
 
 	componentDidMount() {
@@ -73,12 +76,7 @@ class FaveButton extends Component {
 	favouriteCat(id) {
 		this.setState({ isLoading: true });
 
-		fetch(
-			`https://api.jumpstart.site/thecatapi.com/api/images/favourite?sub_id=${
-				this.userId
-			}&image_id=${id}`,
-			{ mode: "no-cors" }
-		)
+		fetch(this.favouriteUrl + `&image_id=${id}`, { mode: "no-cors" })
 			.then(res => {
 				return res.text();
 			})
@@ -101,12 +99,9 @@ class FaveButton extends Component {
 	unfavouriteCat(id) {
 		this.setState({ isLoading: true });
 
-		fetch(
-			`http://api.jumpstart.site/thecatapi.com/api/images/favourite?sub_id=${
-				this.userId
-			}&image_id=${id}&action=remove`,
-			{ mode: "no-cors" }
-		)
+		fetch(this.favouriteUrl + `&image_id=${id}&action=remove`, {
+			mode: "no-cors"
+		})
 			.then(res => {
 				return res.text();
 			})
