@@ -3,7 +3,13 @@ import "./Home.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
 import UserManager from "../../UserManager";
 import { withInfiniteScroll } from "../WithInfiniteScroll";
-import { extractImgObjects, removeDuplicatesFromNewArray } from "../../Utility";
+import {
+	extractImgObjects,
+	removeDuplicatesFromNewArray,
+	handleFetchError
+} from "../../Utility";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class Home extends Component {
 	constructor() {
@@ -21,6 +27,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
+				<ToastContainer />
 				<h1 className="heading">Home</h1>
 				<PhotoGridWithInfinite
 					cats={this.state.cats}
@@ -38,9 +45,7 @@ class Home extends Component {
 	// ** Network Related Calls ** //
 
 	getCats() {
-		this.setState({
-			isLoading: true
-		});
+		this.setState({ isLoading: true });
 
 		fetch(this.fetchCatsEndPoint)
 			.then(res => {
@@ -58,8 +63,8 @@ class Home extends Component {
 				});
 			})
 			.catch(err => {
-				console.log("Error occured! Request cannot be submited.");
-				console.log(err);
+				this.setState({ isLoading: false });
+				handleFetchError(err);
 			});
 	}
 }

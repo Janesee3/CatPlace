@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./MyCats.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
-import { extractImgObjects } from "../../Utility";
+import { extractImgObjects, handleFetchError } from "../../Utility";
 import UserManager from "../../UserManager";
 
 class MyCats extends Component {
@@ -48,8 +48,8 @@ class MyCats extends Component {
 				});
 			})
 			.catch(err => {
-				console.log("Error occured! Request cannot be submited.");
-				console.log(err);
+				this.setState({ isLoading: false });
+				handleFetchError(err);
 			});
 	}
 }

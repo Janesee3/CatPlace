@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartEmpty } from "@fortawesome/free-regular-svg-icons";
 import UserManager from "../../UserManager";
+import { handleFetchError } from "../../Utility";
 
 class FaveButton extends Component {
 	constructor() {
@@ -14,7 +15,7 @@ class FaveButton extends Component {
 			isLoading: false
 		};
 		this.userId = UserManager.getUserId();
-		this.handleFavouriteClick.bind();
+		this.toastId = null;
 	}
 
 	componentDidMount() {
@@ -44,8 +45,8 @@ class FaveButton extends Component {
 	getClickHandler() {
 		let handler;
 		this.state.isActive
-			? (handler = () => this.handleRemoveClick(this.props.picId))
-			: (handler = () => this.handleFavouriteClick(this.props.picId));
+			? (handler = () => this.unfavouriteCat(this.props.picId))
+			: (handler = () => this.favouriteCat(this.props.picId));
 		return !this.state.isLoading ? handler : null;
 	}
 
@@ -67,22 +68,10 @@ class FaveButton extends Component {
 		}
 	}
 
-	//** Button Handlers **/
-
-	handleFavouriteClick(id) {
-		this.favouriteCat(id);
-	}
-
-	handleRemoveClick(id) {
-		this.unfavouriteCat(id);
-	}
-
 	//** Network Related Calls **/
 
 	favouriteCat(id) {
-		this.setState({
-			isLoading: true
-		});
+		this.setState({ isLoading: true });
 
 		fetch(
 			`https://api.jumpstart.site/thecatapi.com/api/images/favourite?sub_id=${
@@ -92,27 +81,24 @@ class FaveButton extends Component {
 			.then(res => {
 				return res.text();
 			})
-			.then(text => {
+			.then(() => {
 				// Update faves in local storage (to be checked against to decide if
 				// button should be in active or inactive state)
 				UserManager.addToUserFavourites(id);
 
-				// Update state of button to change appearance
 				this.setState({
 					isActive: true,
 					isLoading: false
 				});
 			})
 			.catch(err => {
-				console.log("Error occured! Request cannot be submited.");
-				console.log(err);
+				this.setState({ isLoading: false });
+				handleFetchError(err);
 			});
 	}
 
 	unfavouriteCat(id) {
-		this.setState({
-			isLoading: true
-		});
+		this.setState({ isLoading: true });
 
 		fetch(
 			`http://api.jumpstart.site/thecatapi.com/api/images/favourite?sub_id=${
@@ -122,12 +108,11 @@ class FaveButton extends Component {
 			.then(res => {
 				return res.text();
 			})
-			.then(text => {
+			.then(() => {
 				// Update faves in local storage (to be checked against to decide if
 				// button should be in active or inactive state)
 				UserManager.removeFromUserFavourites(id);
 
-				// Update state for button
 				this.setState({
 					isActive: false,
 					isLoading: false
@@ -140,8 +125,8 @@ class FaveButton extends Component {
 				}
 			})
 			.catch(err => {
-				console.log("Error occured! Request cannot be submited.");
-				console.log(err);
+				this.setState({ isLoading: false });
+				handleFetchError(err);
 			});
 	}
 }

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 // Returns an array {key, url (image)} from the input text string
 export const extractImgObjects = text => {
 	let regexUrl = new RegExp("<url>(.+)</url>", "g");
@@ -55,4 +57,13 @@ export const removeDuplicatesFromNewArray = (newArr, oldArr, property) => {
 
 		return !hasDup;
 	});
+};
+
+const triggerErrorToast = () => {
+	toast.error("Oops! Something went wrong, please try again.");
+};
+
+export const handleFetchError = err => {
+	console.log("Error occured! getCats request cannot be submited.", err);
+	triggerErrorToast();
 };
