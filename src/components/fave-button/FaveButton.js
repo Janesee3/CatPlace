@@ -76,7 +76,8 @@ class FaveButton extends Component {
 		fetch(
 			`https://api.jumpstart.site/thecatapi.com/api/images/favourite?sub_id=${
 				this.userId
-			}&image_id=${id}`
+			}&image_id=${id}`,
+			{ mode: "no-cors" }
 		)
 			.then(res => {
 				return res.text();
@@ -103,7 +104,8 @@ class FaveButton extends Component {
 		fetch(
 			`http://api.jumpstart.site/thecatapi.com/api/images/favourite?sub_id=${
 				this.userId
-			}&image_id=${id}&action=remove`
+			}&image_id=${id}&action=remove`,
+			{ mode: "no-cors" }
 		)
 			.then(res => {
 				return res.text();
