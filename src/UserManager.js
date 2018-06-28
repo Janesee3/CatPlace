@@ -1,11 +1,19 @@
 class UserManager {
+	// Generates a user id using the current timestamp appended with
+	// a random number between 1 to 100 in string form
+	generateUserId() {
+		let randNum = Math.floor(Math.random() * 100 + 1);
+		let x = `${JSON.stringify(new Date())}${randNum}`;
+		console.log(x);
+		return x;
+	}
+
 	// Returns user id string
-	// If user id is not accessed before, a new user id is generated using
-	// the current timestamp
+	// If user id is not accessed before, a new one will be generated
 	getUserId() {
 		let userId = localStorage.getItem("userId");
 		if (userId === null || userId === "null") {
-			userId = JSON.stringify(new Date());
+			userId = this.generateUserId();
 			localStorage.setItem("userId", userId);
 		}
 		// Reaccess value because of possible changes to the value inside if condition
