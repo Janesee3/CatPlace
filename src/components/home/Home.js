@@ -14,7 +14,7 @@ class Home extends Component {
 		};
 		this.userId = UserManager.getUserId();
 		this.fetchCatsEndPoint =
-			"http://thecatapi.com/api/images/get?format=xml&results_per_page=20";
+			"https://thecatapi.com/api/images/get?format=xml&results_per_page=20";
 		this.getCats = this.getCats.bind(this);
 	}
 
