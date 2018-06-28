@@ -1,27 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Row, Grid } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import "./PhotoGrid.css";
 import PhotoGridItem from "../photo-grid-item/PhotoGridItem";
 
+// Not a stateless component because it breaks the WithInifinite HOC (?)
 class PhotoGrid extends Component {
 	render() {
 		return (
-			<Grid className="container-fluid">
-				<Row>
-					{this.props.cats.length > 0 &&
-						this.props.cats.map(cat => {
-							return (
-								<PhotoGridItem
-									key={cat.key}
-									id={cat.key}
-									src={cat.src}
-									refreshCallback={this.props.refreshCallback}
-								/>
-							);
-						})}
-				</Row>
-			</Grid>
+			<Row>
+				{this.props.cats.length > 0 &&
+					this.props.cats.map(cat => {
+						return (
+							<PhotoGridItem
+								key={cat.key}
+								id={cat.key}
+								src={cat.src}
+								refreshCallback={this.props.refreshCallback}
+							/>
+						);
+					})}
+			</Row>
 		);
 	}
 }
