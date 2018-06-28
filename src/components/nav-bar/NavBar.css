@@ -2,6 +2,11 @@
     padding: 0;
 }
 
+.nav-bar .row {
+    margin: 0;
+    width: 100%;
+}
+
 .nav-bar a {
     display: block;
     width: inherit;
@@ -13,8 +18,8 @@
     transition-property: all;
     transition-duration: .4s;
     transition-timing-function: linear;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
+    border: 1px solid grey;
+    /* border-right: 1px solid grey; */
 }
 
 .nav-bar a:hover {
@@ -27,4 +32,8 @@
     color: white;
     text-decoration: none;
     background: #3d3d3d
+}
+
+.nav-link-text {
+    font-weight: 500;
 }

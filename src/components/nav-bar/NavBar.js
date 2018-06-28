@@ -8,11 +8,13 @@ const NavBar = () => (
 		<Row>
 			<Col xs={12} md={6}>
 				<Link to="/">
-					<span>Home</span>
+					<span className="nav-link-text">Home</span>
 				</Link>
 			</Col>
 			<Col xs={12} md={6}>
-				<Link to="/my-cats">My Cats</Link>
+				<Link to="/my-cats">
+					<span className="nav-link-text">My Cats</span>
+				</Link>
 			</Col>
 		</Row>
 	</div>
