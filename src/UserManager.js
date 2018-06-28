@@ -2,10 +2,12 @@ class UserManager {
 	// Generates a user id using the current timestamp appended with
 	// a random number between 1 to 100 in string form
 	generateUserId() {
-		let randNum = Math.floor(Math.random() * 100 + 1);
-		let x = `${JSON.stringify(new Date())}${randNum}`;
-		console.log(x);
-		return x;
+		// let randNum = Math.floor(Math.random() * 100 + 1);
+		// let timestamp = JSON.stringify(new Date()).replace(/"/g, "");
+		// let x = `${timestamp}${randNum}`;
+		// console.log(x);
+		// return x;
+		return JSON.stringify(new Date());
 	}
 
 	// Returns user id string
@@ -52,9 +54,6 @@ class UserManager {
 		if (faves.includes(id)) {
 			faves = faves.filter(item => item !== id);
 		}
-
-		console.log(faves);
-		console.log("removed " + id);
 
 		localStorage.setItem("faves", JSON.stringify(faves));
 	}
