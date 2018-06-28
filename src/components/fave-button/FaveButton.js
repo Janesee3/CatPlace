@@ -103,7 +103,10 @@ class FaveButton extends Component {
 					isLoading: false
 				});
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log("Error occured! Request cannot be submited.");
+				console.log(err);
+			});
 	}
 
 	unfavouriteCat(id) {
@@ -136,7 +139,10 @@ class FaveButton extends Component {
 					this.props.refreshCallback();
 				}
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log("Error occured! Request cannot be submited.");
+				console.log(err);
+			});
 	}
 }
 

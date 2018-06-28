@@ -53,6 +53,10 @@ class Home extends Component {
 					cats: this.state.cats.slice().concat(newCats),
 					isLoading: false
 				});
+			})
+			.catch(err => {
+				console.log("Error occured! Request cannot be submited.");
+				console.log(err);
 			});
 	}
 }

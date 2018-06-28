@@ -34,7 +34,7 @@ class MyCats extends Component {
 
 	getFavourites() {
 		fetch(
-			`http://api.jumpstart.site:3000/thecatapi.com/api/images/getfavourites?sub_id=${
+			`https://api.jumpstart.site:3000/thecatapi.com/api/images/getfavourites?sub_id=${
 				this.userId
 			}`
 		)
@@ -46,6 +46,10 @@ class MyCats extends Component {
 					faves: extractImgObjects(text),
 					isLoading: false
 				});
+			})
+			.catch(err => {
+				console.log("Error occured! Request cannot be submited.");
+				console.log(err);
 			});
 	}
 }
