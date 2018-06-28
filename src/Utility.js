@@ -41,4 +41,18 @@ export const isEndOfPage = () => {
 	return windowBottom >= docHeight;
 };
 
+// Returns an array that contains objs originally in newArr, except those
+// that has duplicated property as any object in oldArr.
+export const removeDuplicatesFromNewArray = (newArr, oldArr, property) => {
+	return newArr.filter(newVal => {
+		let hasDup = false;
+		oldArr.forEach(oldVal => {
+			// hasDup will be true if the property is duplicated
+			if (newVal[property] === oldVal[property]) {
+				hasDup = true;
+			}
+		});
 
+		return !hasDup;
+	});
+};

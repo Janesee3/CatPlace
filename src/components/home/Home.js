@@ -3,7 +3,7 @@ import "./Home.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
 import UserManager from "../../UserManager";
 import { withInfiniteScroll } from "../WithInfiniteScroll";
-import { extractImgObjects } from "../../Utility";
+import { extractImgObjects, removeDuplicatesFromNewArray } from "../../Utility";
 
 class Home extends Component {
 	constructor() {
@@ -47,7 +47,10 @@ class Home extends Component {
 				return res.text();
 			})
 			.then(text => {
+				// Remove images from newCats that were already previously pulled
+				// by comparing their "key" attribute
 				let newCats = extractImgObjects(text);
+				newCats = removeDuplicatesFromNewArray(newCats, this.state.cats, "key");
 
 				this.setState({
 					cats: this.state.cats.slice().concat(newCats),
