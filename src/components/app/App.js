@@ -4,7 +4,7 @@ import "./App.css";
 import Home from "../home/Home";
 import MyCats from "../my-cats/MyCats";
 import Header from "../header/Header";
-import UserManager from "../../UserManager";
+// import UserManager from "../../UserManager";
 
 class App extends Component {
 	// For debug purposes only
@@ -20,11 +20,7 @@ class App extends Component {
 					<Header />
 					<div className="container">
 						<Route exact={true} path="/" component={Home} />
-						<Route
-							exact={true}
-							path="/my-cats"
-							component={MyCats}
-						/>
+						<Route exact={true} path="/my-cats" component={MyCats} />
 					</div>
 				</div>
 			</Router>
