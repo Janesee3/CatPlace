@@ -1,27 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Col, Thumbnail } from "react-bootstrap";
 import "./PhotoGridItem.css";
 import FaveButton from "../fave-button/FaveButton";
 
-class PhotoGridItem extends Component {
-	render() {
-		return (
-			<Col md={12} lg={6}>
-				<div className="thumbnail-container">
-					<Thumbnail src={this.props.src}>
-						<div className="button-container">
-							<FaveButton
-								picId={this.props.id}
-								refreshCallback={this.props.refreshCallback}
-							/>
-						</div>
-					</Thumbnail>
+const PhotoGridItem = props => (
+	<Col md={12} lg={6}>
+		<div className="thumbnail-container">
+			<Thumbnail src={props.src}>
+				<div className="button-container">
+					<FaveButton
+						picId={props.id}
+						refreshCallback={props.refreshCallback}
+					/>
 				</div>
-			</Col>
-		);
-	}
-}
+			</Thumbnail>
+		</div>
+	</Col>
+);
 
 PhotoGridItem.propTypes = {
 	id: PropTypes.string.isRequired,
