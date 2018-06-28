@@ -27,7 +27,6 @@ class PhotoGrid extends Component {
 
 PhotoGrid.propTypes = {
 	cats: PropTypes.arrayOf(PropTypes.object).isRequired,
-	hasLoaded: PropTypes.bool.isRequired,
 	loadMore: PropTypes.func, // For infinite scrolling
 	refreshCallback: PropTypes.func // For refreshing page
 };

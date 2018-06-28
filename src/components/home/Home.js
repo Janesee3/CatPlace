@@ -29,11 +29,7 @@ class Home extends Component {
 			<div>
 				<ToastContainer />
 				<h1 className="heading">Home</h1>
-				<PhotoGridWithInfinite
-					cats={this.state.cats}
-					hasLoaded={!this.state.isLoading}
-					loadMore={this.getCats}
-				/>
+				<PhotoGridWithInfinite cats={this.state.cats} loadMore={this.getCats} />
 			</div>
 		);
 	}

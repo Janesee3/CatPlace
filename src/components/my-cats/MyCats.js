@@ -3,6 +3,7 @@ import "./MyCats.css";
 import PhotoGrid from "../photo-grid/PhotoGrid";
 import { extractImgObjects, handleFetchError } from "../../Utility";
 import UserManager from "../../UserManager";
+import { withLoadingIndicator } from "../WithLoading";
 
 class MyCats extends Component {
 	constructor() {
@@ -16,16 +17,16 @@ class MyCats extends Component {
 		this.getFavouritesUrl = `https://api.jumpstart.site/thecatapi.com/api/images/getfavourites?sub_id=${
 			this.userId
 		}`;
-		this.proxyUrl = "https://cors-anywhere.herokuapp.com/";
+		// this.proxyUrl = "https://cors-anywhere.herokuapp.com/";
 	}
 
 	render() {
 		return (
 			<div>
 				<h1 className="heading">My Cats</h1>
-				<PhotoGrid
+				<PhotoGridWithLoading
+					isLoading={this.state.isLoading}
 					cats={this.state.faves}
-					hasLoaded={!this.state.isLoading}
 					refreshCallback={this.getFavourites}
 				/>
 			</div>
@@ -37,7 +38,7 @@ class MyCats extends Component {
 	}
 
 	getFavourites() {
-		fetch(this.proxyUrl + this.getFavouritesUrl)
+		fetch(this.getFavouritesUrl)
 			.then(res => {
 				return res.text();
 			})
@@ -53,5 +54,7 @@ class MyCats extends Component {
 			});
 	}
 }
+
+const PhotoGridWithLoading = withLoadingIndicator(PhotoGrid);
 
 export default MyCats;
