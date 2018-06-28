@@ -13,6 +13,10 @@ class MyCats extends Component {
 		};
 		this.userId = UserManager.getUserId();
 		this.getFavourites = this.getFavourites.bind(this);
+		this.getFavouritesUrl = `https://api.jumpstart.site/thecatapi.com/api/images/getfavourites?sub_id=${
+			this.userId
+		}`;
+		this.proxyUrl = "https://cors-anywhere.herokuapp.com/";
 	}
 
 	render() {
@@ -33,11 +37,7 @@ class MyCats extends Component {
 	}
 
 	getFavourites() {
-		fetch(
-			`https://api.jumpstart.site/thecatapi.com/api/images/getfavourites?sub_id=${
-				this.userId
-			}`
-		)
+		fetch(this.proxyUrl + this.getFavouritesUrl)
 			.then(res => {
 				return res.text();
 			})
