@@ -56,13 +56,13 @@ class FaveButton extends Component {
 	getButtonContent() {
 		if (this.state.isActive) {
 			return (
-				<div>
+				<span>
 					{this.state.isLoading ? "Removing..." : "Remove from Favourites"}
-				</div>
+				</span>
 			);
 		} else {
 			return (
-				<div>{this.state.isLoading ? "Adding..." : "Add to Favourites"}</div>
+				<span>{this.state.isLoading ? "Adding..." : "Add to Favourites"}</span>
 			);
 		}
 	}
