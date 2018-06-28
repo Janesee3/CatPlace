@@ -2,12 +2,9 @@ class UserManager {
 	// Generates a user id using the current timestamp appended with
 	// a random number between 1 to 100 in string form
 	generateUserId() {
-		// let randNum = Math.floor(Math.random() * 100 + 1);
-		// let timestamp = JSON.stringify(new Date()).replace(/"/g, "");
-		// let x = `${timestamp}${randNum}`;
-		// console.log(x);
-		// return x;
-		return JSON.stringify(new Date());
+		let randNum = Math.floor(Math.random() * 100 + 1);
+		let timestamp = JSON.stringify(new Date()).replace(/"/g, ""); // remove double quotes
+		return `${timestamp}${randNum}`;
 	}
 
 	// Returns user id string
