@@ -7,6 +7,11 @@ The Cat Place will provide you with a almost endless stream of cat images and GI
 Get your cat dose here now:
 [The Cat Place](https://thecatplace.netlify.com/ "The Cat Place")
 
+## Prerequisites
+
+The current version requires the user to have a "no-cors" plugin enabled on their browser for the app to be fully functional!
+Recommendation for Chrome: [Allow-Control-Allow-Origin](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
+
 ## Running the app locally
 
 These instructions will get you a copy of the project up and running on your local machine for viewing and/or development purposes.
